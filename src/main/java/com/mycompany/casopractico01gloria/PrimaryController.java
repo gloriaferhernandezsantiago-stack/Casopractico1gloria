@@ -1,0 +1,51 @@
+package com.mycompany.casopractico01gloria;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
+public class PrimaryController implements Initializable {
+
+    @FXML
+    private TextArea txtProductos;
+    @FXML
+    private TextField txtProducto;
+    @FXML
+    private TextField txtProductoSel;
+
+    private Producto[] prods;
+
+    @FXML
+    private void btnAgregar_click() {
+        try {
+            int index = Integer.parseInt(txtProducto.getText().trim()) - 1;
+            if (index >= 0 && index < prods.length) {
+                Producto p = prods[index];
+                txtProductoSel.setText("Pediste unos " + p.getNombre() + " de " + p.getPrecio() + " pesos");
+            } else {
+                txtProductoSel.setText("Producto no encontrado");
+            }
+        } catch (NumberFormatException e) {
+            txtProductoSel.setText("Ingresa un número válido");
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        prods = new Producto[] {
+            new Producto("Hamburguesa", 25),
+            new Producto("Cheetos", 17),
+            new Producto("Mazapán", 5),
+            new Producto("Coca-Cola", 25)
+        };
+
+        int i = 1;
+        for (Producto p : prods) {
+            txtProductos.appendText(i + ", " + p.toString() + "\n");
+            i++;
+        }
+    }
+}
