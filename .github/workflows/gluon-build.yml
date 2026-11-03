@@ -19,4 +19,4 @@ jobs:
           java-version: '17'
 
       - name: Build with GluonFX
-        run: mvn client:build
+        run: mvn gluonfx:build
