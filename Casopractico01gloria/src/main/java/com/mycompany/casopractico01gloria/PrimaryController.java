@@ -3,11 +3,10 @@ package com.mycompany.casopractico01gloria;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class PrimaryController implements Initializable {
+public class PrimaryController {
 
     @FXML
     private TextArea txtProductos;
@@ -33,8 +32,7 @@ public class PrimaryController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize() {
         prods = new Producto[] {
             new Producto("Hamburguesa", 25),
             new Producto("Cheetos", 17),
